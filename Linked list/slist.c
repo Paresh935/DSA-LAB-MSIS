@@ -17,6 +17,16 @@ list->length = 0;
 return list;
 }
 
+static Node *list_node_new_(int32_t data)
+{   
+Node *node;
+node = (Node *)malloc(sizeof(Node));
+if (node == NULL)
+return NULL;
+node->data = data;
+node->next = NULL;
+return node;
+}
 
 
 List *slist_free(List *list)
@@ -61,7 +71,7 @@ return list->length;
 }
 
 
-uint32_t slist_lookup(const List *list)
+uint32_t slist_lookup(const List *list,int32_t key)
 {
 Node* node = list->head;
 for(node=list->head;node!=NULL;node=node->next){
@@ -120,5 +130,10 @@ free(tail)
 return list;
 }
 
+List *slist_add_one(List *list,int32_t data,Node *node){
+    if(list->head==NULL){
+        
+    }
+Node *new_node=list_node_new_(data);    
 
 
